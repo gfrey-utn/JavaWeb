@@ -1,5 +1,5 @@
 -- TP 1: Stored Procedures - Gastón Rey
-use negocioRopaWeb;
+use negocioWebRopa;
 set sql_safe_updates = 0;
 
 -- Borrado de Procedimientos Anteriores
@@ -74,11 +74,11 @@ delimiter //
 -- Tabla Facturas
 
 delimiter //
-	create procedure SP_Facturas_Insert(Pletra enum('A','B','C'), Pnumero int, Pfenaci date,
+	create procedure SP_Facturas_Insert(Pletra enum('A','B','C'), Pnumero int, Pfecha date,
 			PmedioDePago enum('EFECTIVO','DEBITO','TARJETA'), PidCliente int)
     begin
-		insert into facturas (letra, numero, fenaci, medioDePago, idCliente) values
-        (Pletra, Pnumero, Pfenaci, PmedioDePago, PidCliente);
+		insert into facturas (letra, numero, fecha, medioDePago, idCliente) values
+        (Pletra, Pnumero, Pfecha, PmedioDePago, PidCliente);
     end
 // delimiter ;
 
@@ -91,9 +91,9 @@ delimiter //
 
 delimiter //
 	create procedure SP_Facturas_Update(Pid int, Pletra enum('A','B','C'), Pnumero int,
-		Pfenaci date, PmedioDePago enum('EFECTIVO','DEBITO','TARJETA'), PidCliente int)
+		Pfecha date, PmedioDePago enum('EFECTIVO','DEBITO','TARJETA'), PidCliente int)
     begin
-		update facturas set letra = Pletra, numero = Pnumero, fenaci = Pfenaci,
+		update facturas set letra = Pletra, numero = Pnumero, fecha = Pfecha,
 			medioDePago = PmedioDePago, idCliente = PidCliente where id = Pid;
     end
 // delimiter ;
